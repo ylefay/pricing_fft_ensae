@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.12.29)  31 JAN 2022 22:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.12.29)  31 JAN 2022 23:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -362,32 +362,32 @@ Package pdftex.def Info: /home/grothendieck/1A/ENSAE1A/info/LOGO-ENSAE.png  used
 </home/grothendieck/BS0.jpg, id=38, 770.88pt x 495.8525pt>
 File: /home/grothendieck/BS0.jpg Graphic file (type jpg)
 <use /home/grothendieck/BS0.jpg>
-Package pdftex.def Info: /home/grothendieck/BS0.jpg  used on input line 170.
+Package pdftex.def Info: /home/grothendieck/BS0.jpg  used on input line 172.
 (pdftex.def)             Requested size: 192.71953pt x 123.96281pt.
 </home/grothendieck/BS1.jpeg, id=39, 770.88pt x 503.8825pt>
 File: /home/grothendieck/BS1.jpeg Graphic file (type jpg)
 <use /home/grothendieck/BS1.jpeg>
-Package pdftex.def Info: /home/grothendieck/BS1.jpeg  used on input line 172.
+Package pdftex.def Info: /home/grothendieck/BS1.jpeg  used on input line 174.
 (pdftex.def)             Requested size: 192.71953pt x 125.9703pt.
 </home/grothendieck/Heston0.jpg, id=40, 770.88pt x 495.8525pt>
 File: /home/grothendieck/Heston0.jpg Graphic file (type jpg)
 <use /home/grothendieck/Heston0.jpg>
-Package pdftex.def Info: /home/grothendieck/Heston0.jpg  used on input line 174.
+Package pdftex.def Info: /home/grothendieck/Heston0.jpg  used on input line 176.
 (pdftex.def)             Requested size: 192.71953pt x 123.96281pt.
 </home/grothendieck/Heston1.jpeg, id=41, 770.88pt x 498.86375pt>
 File: /home/grothendieck/Heston1.jpeg Graphic file (type jpg)
 <use /home/grothendieck/Heston1.jpeg>
-Package pdftex.def Info: /home/grothendieck/Heston1.jpeg  used on input line 176.
+Package pdftex.def Info: /home/grothendieck/Heston1.jpeg  used on input line 178.
 (pdftex.def)             Requested size: 192.71953pt x 124.71562pt.
 </home/grothendieck/Merton0.jpg, id=42, 770.88pt x 495.8525pt>
 File: /home/grothendieck/Merton0.jpg Graphic file (type jpg)
 <use /home/grothendieck/Merton0.jpg>
-Package pdftex.def Info: /home/grothendieck/Merton0.jpg  used on input line 178.
+Package pdftex.def Info: /home/grothendieck/Merton0.jpg  used on input line 180.
 (pdftex.def)             Requested size: 192.71953pt x 123.96281pt.
 </home/grothendieck/Merton1.jpg, id=43, 770.88pt x 498.86375pt>
 File: /home/grothendieck/Merton1.jpg Graphic file (type jpg)
 <use /home/grothendieck/Merton1.jpg>
-Package pdftex.def Info: /home/grothendieck/Merton1.jpg  used on input line 180.
+Package pdftex.def Info: /home/grothendieck/Merton1.jpg  used on input line 182.
 (pdftex.def)             Requested size: 192.71953pt x 124.71562pt.
 
 
@@ -401,12 +401,12 @@ Here is how much of TeX's memory you used:
  26526 multiletter control sequences out of 15000+600000
  420771 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,12n,79p,470b,1040s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on FFT_pricing.pdf (5 pages, 397941 bytes).
+ 69i,12n,79p,584b,1053s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
+Output written on FFT_pricing.pdf (5 pages, 392938 bytes).
 PDF statistics:
- 149 PDF objects out of 1000 (max. 8388607)
- 86 compressed objects within 1 object stream
+ 144 PDF objects out of 1000 (max. 8388607)
+ 83 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

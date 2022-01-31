@@ -24,7 +24,7 @@
 	\includegraphics[height=2in]{/home/grothendieck/1A/ENSAE1A/info/LOGO-ENSAE.png}
 \end{center}
 \begin{abstract}
-	Nous proposons une méthode de pricing d'options européennes dont l'on connaît la fonction caractéristique $\varphi$ de $S_0e^{X_t}$ en utilisant la formule d'inversion de Carr-Madan. Cette formule donne la solution analytique du prix de l'option sous la forme d'une transformée de Fourier, ce qui permet, grâce à la transformée de Fourier discrète, de calculer une solution approchée en complexité $O(N\log N)$. 
+	Nous proposons une méthode de pricing d'options européennes dont l'on connaît la fonction caractéristique $\varphi$ de $\log S_t$ en utilisant la formule d'inversion de Carr-Madan. Cette formule donne la solution analytique du prix de l'option sous la forme d'une transformée de Fourier, ce qui permet, grâce à la transformée de Fourier discrète, de calculer une solution approchée en complexité $O(N\log N)$. 
 
 	Nous nous referons à la thèse de master de ManWo Ng, PhD, "Option Pricing via the FFT".
 \end{abstract}
@@ -111,7 +111,7 @@ Il s'agit d'approcher $C_T$ par
 	\frac{\exp(-\alpha k)}{\pi}\textup{Re}\bigg\{\sum_{j=0}^{N-1} e^{-i \eta j k}\psi(\eta j)\eta\bigg\}
 \end{align*}
 
-La somme dans la partie réelle se calcule à l'aide d'un algorithme FFT. L'algorithme de Turkey-Cooley permet de calculer les sommes de la forme $\sum_{j=0}^{N-1} e^{-i\frac{2\pi}{N} j u} x_j$ pour $u=0,\ldots, N-1$ où $N= 2^n$ en un temps $O(N\log N) = O(N n)$ en suivant un principe de "diviser pour mieux régner".
+La somme dans la partie réelle se calcule à l'aide d'un algorithme FFT. L'algorithme de Turkey-Cooley permet de calculer les sommes de la forme $\sum_{j=0}^{N-1} e^{-i\frac{2\pi}{N} j u} x_j$ pour $u=0,\ldots, N-1$ en un temps $O(N\log N)$ en suivant un principe de "diviser pour mieux régner".
 
 On considère des log-strikes réparties uniformément près du log-prix $s_0$, 
 \begin{align*}
@@ -135,35 +135,37 @@ Il est montré dans "Option Pricing via the FFT" que la valeur $\alpha = 0.75$ (
 
 Il est convenable de penser qu'une valeur $\alpha$, fonction des paramètres du modèle, qui minimise l'intégrande, rende le calcul plus tractable, 
 \begin{align*}
-	\alpha = \textup{argmin}_{\alpha > 0} \bigg\|\frac{e^{-rT}\phi_T(u-(\alpha+1)i)}{\alpha^2+\alpha-u^2+i(2\alpha+1)u}\bigg\|_{\infty, u}
+	\alpha = \textup{argmin}_{\alpha > 0} \textup{sup}_{u\in\mathbb{R}}\big\|\frac{e^{-rT}\phi_T(u-(\alpha+1)i)}{\alpha^2+\alpha-u^2+i(2\alpha+1)u}\big\|
 \end{align*}
 
-Voir la référence pour des expressions analytiques dans le cas de Black-Scholes et du modèle d'Heston de $\alpha$.
-\subsection{Structure du code}
+Voir la référence pour des expressions analytiques dans les cas de Black-Scholes et Heston de $\alpha$.
+\subsection{Structure, utilisation du programme et difficultés rencontrées}
 Dans ce projet, nous avons fait le choix d’organiser notre code autour de l’utilisation de classes. Ceci nous a permis de profiter des avantages offerts par la programmation orientée objet.
 
-Présentons tout d’abord les classes utilisées.
-La classe \lstinline{ClosedForm} qui permet de calculer des prix à partir de la formule fermée dans le modèle de Black Scholes pour un call européen. Elle contient les attributs suivants : risk free rate, volatilité, maturité et prix $S$ du sous-jacent en 0.
-La classe \lstinline{fft} qui permet de calculer la FFT d’un tableau en $O(N\log N)$.
-La classe \lstinline{Cdf} (respectivement \lstinline{CdfMerton} et \lstinline{CdfHeston}) qui permet de calculer la fonction de répartition du log du prix du sous jacent ainsi que la transformée de Fourier de $c_T$ pour le modèle de Black Scholes (respectivement Black Scholes Merton et Heston).
-La classe \lstinline{Calculator} (respectivement \lstinline{CalculatorMerton}, \lstinline{CalculatorHeston}) qui permet de calculer la liste des prix de call pour une liste de strikes autour du prix du sous jacent en 0 en suivant le modèle de Black Scholes (respectivement Black Scholes, Merton, Heston).
-
-
-Le fichier \lstinline{main.cpp} contient l'appellation de chacun des objets décrits ci-dessus et renvoie les résultats dans des fichiers texte sous un format lisible par Mathematica. Cela peut très facilement être adapté pour un output lisible par le module pandas sous Python par exemple, rendant le traitement de ces outputs facilement exportable et utilisable.
-
+\begin{itemize}
+	\item La classe \lstinline{ClosedForm} permet le calcul des prix à partir de la formule close dans le modèle de Black Scholes pour un call européen. Elle contient les attributs suivants : risk free rate, volatilité, maturité et prix $S$ du sous-jacent en 0.
+	\item La classe \lstinline{fft} permet de calculer la FFT d’un tableau en $O(N\log N)$.
+	\item La classe \lstinline{Cdf} (respectivement \lstinline{CdfMerton} et \lstinline{CdfHeston}) permet de calculer la fonction de répartition du log du prix du sous jacent ainsi que la transformée de Fourier de $c_T$ pour le modèle de Black Scholes (respectivement Black Scholes Merton et Heston).
+	\item La classe \lstinline{Calculator} (respectivement \lstinline{CalculatorMerton}, \lstinline{CalculatorHeston}) permet de calculer la liste des prix de call pour une liste de strikes autour du prix du sous jacent en 0 en suivant le modèle de Black Scholes (respectivement Black Scholes, Merton, Heston).
+\end{itemize}
 L’utilisation du fichier main.cpp se décompose en cinq parties :
 \begin{itemize}
 	\item Remplissage des paramètres propres au modèle que l’on souhaite utiliser (dans le code donné en exemple, tous les modèles sont utilisés)
-        \item Construction d’un objet de la classe de calcul correspondant au modèle utilisée : \lstinline{ClosedForm} pour un calcul de call européen à l’aide de la formule exacte et \lstinline{Calculator} (respectivement \lstinline{CalculatorMerton}, \lstinline{CalculatorHeston} pour les modèles de Black Scholes, BSMerton ou Heston).
+        \item Construction d’un objet de la classe de calcul correspondant au modèle utilisée : \lstinline{ClosedForm} pour un calcul de call européen à l’aide de la formule exacte et \lstinline{Calculator} (respectivement \lstinline{CalculatorMerton}, \lstinline{CalculatorHeston} pour les modèles de Black Scholes, BSMerton ou Heston) à l'aide de la méthode FFT.
 	\item Construction d’une liste qui va contenir les strikes (ou les log-strikes dans le cas des calculator FFT) et d’une liste qui va contenir les valeurs des call correspondants.
 	\item Appel de la fonction de calcul de la classe correspondante (utilisation d’une boucle for pour la closed form).
 	\item Extraction des résultats à l’aide de la fonction correspondante (ClosedForm ou FFT) dans un fichier texte. Ici, les résultats sont dans un format adapté à la lecture par Mathematica. Les fonctions d’extraction peuvent être modifiées afin que les résultats sortent dans un format lisible par Pandas par exemple.
 \end{itemize}
-Remarque : le code fourni contient également une ligne permettant d’afficher le prix calculé du call en $S$ le prix initial du sous-jacent (valeur la plus pertinente).
-\subsection{Comparaisons numériques}
-On pose, $N = 8192$, $r = 0.05$, $v = 0.7$, $\sigma=0.2$, $T=1$, $S_0 = 100$, $\eta = 0.0125$, $\alpha = 0.75$, $p = -0.5$, $v_0 = 0.2$, $\lambda = 0.13$, $\mu = 0$, $\delta = 0.0004$, $\kappa = 10$.
 
-On compare les résultats obtenus par FFT avec, lorsque l'on peut, les résultats obtenus par forme close ou par la méthode $\textup{NIntegrate}$ de Mathematica pour le calcul de l'intégrale de Fourier définissant $C_T$.
+Chaque membre du groupe a déjà une certaine expérience en programmation et a déjà fait de la POO. Nous n'avons donc rencontré aucune véritable difficulté.
+
+L'étape majeure du projet a été de penser la structure du programme : établir les classes, puis les fonctions et les variables que chacune avaient en commun de manière à bien exploiter l'héritage.
+O
+Ce projet a été pour nous l'occasion de se familiariser avec la syntaxe C++, quelques techniques en calcul numérique (algorithme FFT), ainsi que sur différents modèles de pricing.
+\subsection{Comparaisons numériques}
+On pose, $N = 8192$, $r = 0.05$, $v = 0.7$, $\sigma=0.2$, $T=1$, $S_0 = 100$, $\eta = 0.0125$, $\alpha = 0.75$, $\rho = -0.5$, $v_0 = 0.2$, $\lambda = 0.13$, $\mu = 0$, $\delta = 0.0004$, $\kappa = 10$.
+
+On compare les résultats obtenus par FFT avec, lorsque l'on peut, les résultats obtenus avec la forme close. Dans le cas où l'on ne connaît pas la forme close, on compare les résultats FFT avec ceux obtenus par la méthode $\textup{NIntegrate}$ de Mathematica pour l'évaluation de l'intégrale de Fourier définissant $C_T$. Voir Fig. 1, 2 et 3.
 
 \begin{figure}[h]
 	\centering
@@ -179,6 +181,24 @@ On compare les résultats obtenus par FFT avec, lorsque l'on peut, les résultat
 	\qquad
 	\subfloat{{\includegraphics[scale=0.25]{/home/grothendieck/Merton1.jpg}}}
 	\caption{A gauche en orange, NIntegrate de Mathematica}
+\end{figure}
+\subsection{Comparaison avec Monte-Carlo}
+Il est difficile d'effectuer une comparaison toutes choses égales par ailleurs de l'algorithme présenté avec celui de Monte-Carlo. L'algorithme de MC a une complexité qui dépend de la précision attendue entre le prix Monte-Carlo et le prix exact. En effet, si on fait $M$ tirages, le théorème centrale limite assure que la différence est de l'ordre de $1/\sqrt{M}$. Ainsi, à une précision $\varepsilon$ fixée, la complexité de l'algorithme est $O(M) = O(1/\varepsilon^2)$. Cet algorithme donne le prix pour une seule valeur de strike. 
+
+Dans le cas de l'algorithme FFT, le paramètre qui caractérise la complexité est $N$, le nombre de valeurs de strike. L'écart entre l'intégrale exacte de Fourier et la transformée de Fourier discrète n'est pas explicite (à notre connaissance) mais dépend positivement de $\eta$ i.e négativement de $N$.
+
+Ainsi, on contrôle la précision dans un premier cas mais pas dans le second, dans le premier cas on calcule $C_T$ pour un strike, dans le second pour $N$. La comparaison est délicate. 
+
+Toutefois, il est possible de trouver une configuration des deux méthodes de manière à obtenir des valeurs numériques similaires. Alors dans ce cas, il est possible de comparer le temps de calcul des deux algorithmes. Voir le tableau suivant.
+\begin{figure}
+	\centering
+\begin{tabular}{lll}
+	Modèle & FFT & MC\\
+	\hline
+	Merton & 0.01 & 25.1\\
+	Heston & 0.01 & 27.6\\
+\end{tabular}
+\caption{Temps de calcul en secondes pour les deux méthodes, 20 strikes différents et résultats moyennés sur 5000 essais.}
 \end{figure}
 \end{document}
 
