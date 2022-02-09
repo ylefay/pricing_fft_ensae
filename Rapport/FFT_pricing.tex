@@ -101,14 +101,14 @@ La transformée de Fourier inverse donne
 
 A l'aide de Fubini, on obtient
 \begin{align*}
-\psi_T(u) = \frac{e^{-rT}\varphi_T(u-(\alpha+1)i)}{\alpha^2+\alpha-u^2+i(2\alpha+1)u)}
+\psi_T(u) = \frac{e^{-rT}\varphi_T(u-(\alpha+1)i)}{\alpha^2+\alpha-u^2+i(2\alpha+1)u}
 \end{align*}
 
 Une condition suffisante pour que $c_T \in L^1$, est $\mathbb{E}S_T^{\alpha+1} < \infty$.
 \subsection{Approximation numérique et FFT}
 Il s'agit d'approcher $C_T$ par 
 \begin{align*}
-	\frac{\exp(-\alpha k)}{\pi}\textup{Re}\bigg\{\sum_{j=0}^{N-1} e^{-i \eta j k}\psi(\eta j)\eta\bigg\}
+	C_T(K) = \frac{\exp(-\alpha k)}{\pi}\textup{Re}\bigg\{\sum_{j=0}^{N-1} e^{-i \eta j k}\psi(\eta j)\eta\bigg\}
 \end{align*}
 
 La somme dans la partie réelle se calcule à l'aide d'un algorithme FFT. L'algorithme de Turkey-Cooley permet de calculer les sommes de la forme $\sum_{j=0}^{N-1} e^{-i\frac{2\pi}{N} j u} x_j$ pour $u=0,\ldots, N-1$ en un temps $O(N\log N)$ en suivant un principe de "diviser pour mieux régner".

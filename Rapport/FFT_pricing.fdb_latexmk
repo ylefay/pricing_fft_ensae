@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1643671613 "FFT_pricing.tex" "FFT_pricing.pdf" "FFT_pricing" 1643671614
+["pdflatex"] 1644444433 "FFT_pricing.tex" "FFT_pricing.pdf" "FFT_pricing" 1644444433
   "/home/grothendieck/1A/ENSAE1A/info/LOGO-ENSAE.png" 1629801153 31772 06ff86c9e56a8bf28d009e8b49752c87 ""
   "/home/grothendieck/BS0.jpg" 1643501941 15033 742aac70b62fd6f9e29236cba33b0c17 ""
   "/home/grothendieck/BS1.jpeg" 1643501980 15650 b6f782b8ad589401a077f97dfdfe6651 ""
@@ -118,8 +118,8 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1640600964 39911 2da6c67557ec033436fe5418a70a8a61 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1640761940 4277382 f4b668d5c6f6b9f6e549eddd9b12a02d ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1640761925 2920101 fbc6dae0d42ff2a321c34232e172012c ""
-  "FFT_pricing.aux" 1643671614 2063 df0ca60e3ff269335fe8015f95bc5e7f "pdflatex"
-  "FFT_pricing.tex" 1643671613 13076 ecbb4b1b207855b779de3fa9638874ef ""
+  "FFT_pricing.aux" 1644444433 2063 df0ca60e3ff269335fe8015f95bc5e7f "pdflatex"
+  "FFT_pricing.tex" 1644444432 13084 686e38c85cc9f8a477187d7c84c05e1a ""
   (generated)
   "FFT_pricing.aux"
   "FFT_pricing.log"
