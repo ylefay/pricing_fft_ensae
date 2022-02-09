@@ -1,15 +1,17 @@
-#include "CDF.h"
-#include "FFT.h"
-#include "Calculator.h"
+#include "CF.h"
 
 using namespace std;
 
-Calculator::Calculator(double r, double v, double T, double s0, double alpha, double eta, int N) : r(r), v(v), T(T), s0(s0), alpha(alpha), eta(eta), N(N) {}
+CF::CF(double r, double T, double alpha, int N, double eta, double s0):r(r), T(T), alpha(alpha), N(N), eta(eta), s0(s0){}
 
+// Fourier tranform of c_T
+complex<double> CF::psi(const complex<double> t) const {
+    complex<double> i(0.0, 1.0);
+    return exp(-r * T) * phi(t - i * (alpha + 1)) / (alpha * alpha + alpha - t * t + i * t * (2 * alpha + 1));
+}
 
-double Calculator::pricer(complex<double> *x_out, complex<double> *k_u) const{
+double CF::pricer(complex<double> *x_out, complex<double> *k_u) const{
     double zeta = 2 * M_PI / (N * eta);
-    Cdf cdf(r, v, T, s0, alpha);
     complex<double> i(0.0, 1.0);
 
     // Calculate the array of v_j values
@@ -21,7 +23,7 @@ double Calculator::pricer(complex<double> *x_out, complex<double> *k_u) const{
     // Calculate the array of x_j values
     complex<double> x_in[N];
     for (int j = 0; j < N; j++){
-    x_in[j] = exp(i * (0.5 * N * zeta - s0) * v[j]) * cdf.psi(v[j]) ;
+    x_in[j] = exp(i * (0.5 * N * zeta - s0) * v[j]) * psi(v[j]) ;
     }
 
     // Calculate the array of k_u values

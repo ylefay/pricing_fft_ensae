@@ -1,0 +1,193 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5659,        183]
+NotebookOptionsPosition[      5056,        165]
+NotebookOutlinePosition[      5391,        180]
+CellTagsIndexPosition[      5348,        177]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"S0", "=", "100"}], ";", 
+  RowBox[{"s0", "=", 
+   RowBox[{"Log", "[", "S0", "]"}]}], ";", 
+  RowBox[{"T", "=", "1"}], ";", 
+  RowBox[{"r", "=", "0.05"}], ";", 
+  RowBox[{"kappa", "=", "10"}], ";", 
+  RowBox[{"theta", "=", "0.2"}], ";", 
+  RowBox[{"sigma", "=", "0.2"}], ";", 
+  RowBox[{"rho", "=", 
+   RowBox[{"-", "0.5"}]}], ";", 
+  RowBox[{"v0", "=", "0.2"}], ";", 
+  RowBox[{"x0", "=", "0"}], ";", 
+  RowBox[{"alpha", "=", 
+   RowBox[{"3", "/", "4"}]}], ";", 
+  RowBox[{"eta", "=", "0.0125"}], ";", 
+  RowBox[{"Nn", "=", "8192"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"PhiX", "[", "z_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Exp", "[", 
+    RowBox[{"I", " ", "s0", " ", "z"}], "]"}], 
+   RowBox[{"Exp", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "1"}], "/", "2"}], " ", 
+      RowBox[{"sigma", "^", "2"}], " ", "T", " ", 
+      RowBox[{"z", "^", "2"}]}], "+", 
+     RowBox[{"I", " ", "z", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"r", "-", 
+          RowBox[{
+           RowBox[{"1", "/", "2"}], " ", 
+           RowBox[{"sigma", "^", "2"}]}]}], ")"}], "T"}], ")"}]}]}], " ", 
+    "]"}]}]}]}], "Input",
+ CellChangeTimes->{{3.853330471808322*^9, 3.853330550249085*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"f8db1eb6-48a9-4c6b-8b9a-64c2399644a0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Psi", "[", "u_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"Exp", "[", 
+    RowBox[{
+     RowBox[{"-", "r"}], " ", "T"}], "]"}], 
+   RowBox[{
+    RowBox[{"PhiX", "[", 
+     RowBox[{"u", "-", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"alpha", "+", "1"}], ")"}], "I"}]}], "]"}], "/", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"alpha", "^", "2"}], "+", "alpha", "-", 
+      RowBox[{"u", "^", "2"}], "+", 
+      RowBox[{"I", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"2", "alpha"}], "+", "1"}], ")"}], "u"}]}], 
+     ")"}]}]}]}]], "Input",
+ CellLabel->"In[5]:=",ExpressionUUID->"beb82cf4-376a-4656-ba12-b7d32b265143"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"v", "[", "j_", "]"}], ":=", 
+   RowBox[{"eta", " ", "j"}]}], " ", ";", 
+  RowBox[{
+   RowBox[{"x", "[", "j_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Exp", "[", 
+     RowBox[{"I", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"1", "/", "2"}], "Nn", " ", "Zee"}], "-", "s0"}], ")"}], 
+      RowBox[{"v", "[", "j", "]"}]}], "]"}], 
+    RowBox[{"Psi", "[", 
+     RowBox[{"v", "[", "j", "]"}], "]"}]}]}], ";", 
+  RowBox[{"Zee", "=", 
+   RowBox[{"2", 
+    RowBox[{"Pi", "/", 
+     RowBox[{"(", 
+      RowBox[{"Nn", " ", "eta"}], ")"}]}]}]}], ";", 
+  RowBox[{
+   RowBox[{"kw", "[", "u_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "1"}], "/", "2"}], "Nn", " ", "Zee"}], "+", 
+    RowBox[{"Zee", " ", "u"}], " ", "+", " ", "s0"}]}], ";", 
+  RowBox[{
+   RowBox[{"CT", "[", "u_", "]"}], ":=", 
+   RowBox[{"Re", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Exp", "[", 
+       RowBox[{
+        RowBox[{"-", "alpha"}], " ", 
+        RowBox[{"kw", "[", "u", "]"}]}], "]"}], "/", "Pi"}], " ", 
+     RowBox[{"Sum", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Exp", "[", 
+         RowBox[{
+          RowBox[{"-", "I"}], " ", "Zee", " ", "eta", " ", "j", " ", "u"}], 
+         "]"}], 
+        RowBox[{"x", "[", "j", "]"}], " ", "eta"}], " ", ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "0", ",", 
+         RowBox[{"Nn", "-", "1"}]}], "}"}]}], "]"}]}], "]"}]}], ";", 
+  RowBox[{
+   RowBox[{"CT2", "[", "k_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Exp", "[", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], " ", "k"}], "]"}], "/", "Pi"}], " ", 
+    RowBox[{"Re", "[", 
+     RowBox[{"NIntegrate", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Exp", "[", 
+         RowBox[{
+          RowBox[{"-", "I"}], " ", "u", " ", "k"}], "]"}], 
+        RowBox[{"Psi", "[", "u", "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"u", ",", "0", ",", "100"}], "}"}]}], "]"}], "]"}]}]}], ";", 
+  RowBox[{"CT2", "[", 
+   RowBox[{"kw", "[", 
+    RowBox[{"Nn", "/", "2"}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.853330565546248*^9, 3.853330605740902*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"08be9d88-7af0-4ff6-81db-d104fc317b55"],
+
+Cell[BoxData["10.450583572186748`"], "Output",
+ CellChangeTimes->{3.8533306064059353`*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"ea9e8973-a08e-42c6-ad67-1c9badb998c9"]
+}, Open  ]]
+},
+WindowSize->{1360, 184},
+WindowMargins->{{3, Automatic}, {190, Automatic}},
+FrontEndVersion->"12.0 for Linux x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1363, 40, 331, "Input",ExpressionUUID->"f8db1eb6-48a9-4c6b-8b9a-64c2399644a0"],
+Cell[1924, 62, 672, 22, 31, "Input",ExpressionUUID->"beb82cf4-376a-4656-ba12-b7d32b265143"],
+Cell[CellGroupData[{
+Cell[2621, 88, 2248, 70, 170, "Input",ExpressionUUID->"08be9d88-7af0-4ff6-81db-d104fc317b55"],
+Cell[4872, 160, 168, 2, 67, "Output",ExpressionUUID->"ea9e8973-a08e-42c6-ad67-1c9badb998c9"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
