@@ -4,7 +4,7 @@ using namespace std;
 
 CF::CF(double r, double T, double alpha, int N, double eta, double s0):r(r), T(T), alpha(alpha), N(N), eta(eta), s0(s0){}
 
-// Fourier tranform of c_T
+// Fourier transform of c_T
 complex<double> CF::psi(const complex<double> t) const {
     complex<double> i(0.0, 1.0);
     return exp(-r * T) * phi(t - i * (alpha + 1)) / (alpha * alpha + alpha - t * t + i * t * (2 * alpha + 1));
@@ -31,7 +31,7 @@ double CF::pricer(complex<double> *x_out, complex<double> *k_u) const{
         k_u[j] = (-0.5 * N * zeta + zeta * j) + s0;
     }
 
-    //Apply the FFT
+    // Apply the FFT
     fft(x_in, x_out, N);
 
     for (int j = 0; j < N; j++){

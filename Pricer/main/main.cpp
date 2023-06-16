@@ -14,6 +14,7 @@
 
 using namespace std;
 
+// write to file
 void extract_results_fft(const char *file_name, complex<double> *x_out, complex<double> *k_u, int N){
 	FILE * f;
 	f = fopen (file_name, "wt");
